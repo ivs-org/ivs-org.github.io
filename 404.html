@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>VideoGrace ВКС</title>
+    <meta http-equiv="Content-Language" content="ru" />
+    <meta name="description" content="Мессенджер и платформа видеоконференций VideoGrace">
+    <meta name="author" content="TAS Engineering" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="VideoGrace" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/icons/videograce-icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/icons/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/icons/favicon-16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="VideoGrace ВКС" />
+    <meta property="og:description" content="Мессенджер и платформа видеоконференций VideoGrace" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VideoGrace ВКС" />
+    <meta name="twitter:description" content="Мессенджер и платформа видеоконференций VideoGrace" />
+    <script type="module" crossorigin src="/assets/index-ASDlYf04.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CfFmKh3V.css">
+  </head>
+
+  <body>
+    <div id="root">
+      <div id="vg-boot-fallback" role="status" aria-live="polite">
+        <img src="/icons/icon-192.png" alt="VideoGrace" width="72" height="72" />
+        <strong>VideoGrace</strong>
+        <span id="vg-boot-status">Запускаем приложение...</span>
+        <a id="vg-boot-recover" href="/recover.html" hidden>Восстановить запуск</a>
+      </div>
+    </div>
+    <style>
+      #vg-boot-fallback {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        box-sizing: border-box;
+        padding: 28px;
+        background: #080d18;
+        color: #f8fafc;
+        font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        text-align: center;
+      }
+      #vg-boot-fallback img { border-radius: 18px; }
+      #vg-boot-fallback strong { font-size: 22px; }
+      #vg-boot-status { color: #94a3b8; }
+      #vg-boot-recover {
+        margin-top: 8px;
+        border-radius: 10px;
+        padding: 11px 18px;
+        background: #0284c7;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+      }
+    </style>
+    <script>
+      (function () {
+        // This fallback must work even when the application bundle cannot load.
+        // Keep the storage key and RU fallback aligned with src/i18n/resources.ts.
+        var language = 'ru';
+        try {
+          var savedLanguage = (localStorage.getItem('vg_ui_language') || '').trim().toLowerCase().split(/[-_]/)[0];
+          if (savedLanguage === 'en') language = 'en';
+        } catch (error) {}
+        var text = language === 'en' ? {
+          starting: 'Starting the app...',
+          recover: 'Restore startup',
+          failed: 'The app did not start. You can safely refresh the local loader.'
+        } : {
+          starting: 'Запускаем приложение...',
+          recover: 'Восстановить запуск',
+          failed: 'Приложение не запустилось. Можно безопасно обновить локальный загрузчик.'
+        };
+        document.documentElement.lang = language;
+        document.getElementById('vg-boot-status').textContent = text.starting;
+        document.getElementById('vg-boot-recover').textContent = text.recover;
+        var revealRecovery = function () {
+          var status = document.getElementById('vg-boot-status');
+          var recover = document.getElementById('vg-boot-recover');
+          if (!status || !recover) return;
+          status.textContent = text.failed;
+          recover.hidden = false;
+        };
+        window.setTimeout(revealRecovery, 8000);
+        window.addEventListener('error', revealRecovery);
+        window.addEventListener('unhandledrejection', revealRecovery);
+      }());
+    </script>
+  </body>
+</html>
