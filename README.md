@@ -16,3 +16,8 @@ private source repository, configuration secrets, or server databases are includ
 without credentialed CORS when an explicit refresh token is available. Built from
 VideoGrace 9e8bb5c63 plus the isolated ControlWS refresh fix; no experimental mesh UI
 or server changes are included. Previous hashed assets are retained for open clients.
+
+2026-11-22 follow-up (VideoGrace 0c62146ef): explicit JSON 401 on refresh now
+requests sign-in even when a legacy cookie marker remains. Preserve local chat
+history and retry transient transport errors. Still built from 9e8bb5c63 with only
+the ControlWS hotfixes. Entry: index-C9k8n-Rg.js.
