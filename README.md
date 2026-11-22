@@ -21,3 +21,8 @@ or server changes are included. Previous hashed assets are retained for open cli
 requests sign-in even when a legacy cookie marker remains. Preserve local chat
 history and retry transient transport errors. Still built from 9e8bb5c63 with only
 the ControlWS hotfixes. Entry: index-C9k8n-Rg.js.
+
+2026-11-22 mesh pilot: publish the full VideoGrace T-177 web client at 0c62146ef,
+including coordinator admin monitoring and both session recovery hotfixes. The demo
+server now coordinates three mesh-capable RTC workers. Inter-node encryption is
+not enabled in this temporary pilot; ingress is restricted to the RTC source IPs.
