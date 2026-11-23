@@ -26,3 +26,8 @@ the ControlWS hotfixes. Entry: index-C9k8n-Rg.js.
 including coordinator admin monitoring and both session recovery hotfixes. The demo
 server now coordinates three mesh-capable RTC workers. Inter-node encryption is
 not enabled in this temporary pilot; ingress is restricted to the RTC source IPs.
+
+2026-11-23: publish VideoGrace 3.0.261123 (T-177, source 109a4cde9),
+client protocol 619. Demo and all three required RTC media nodes now run the
+same signed Linux release. Entry: index-wOBIphDC.js. Previous hashed assets
+remain available for already open tabs.
